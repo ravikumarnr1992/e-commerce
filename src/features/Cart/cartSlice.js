@@ -83,7 +83,7 @@ export default function cartReducer(state = initialStateCart, action) {
                 }
               : item
           ),
-          totalPrice: state.totalPrice + action.payload.price * action.payload.quantity,
+          totalPrice: state.totalPrice + (action.payload.price * action.payload.quantity),
         };
       }
 
@@ -93,7 +93,7 @@ export default function cartReducer(state = initialStateCart, action) {
           ...state.cartItems,
           { ...action.payload, quantity: action.payload.quantity },
         ],
-        totalPrice: state.totalPrice + action.payload.price,
+        totalPrice: state.totalPrice + (action.payload.price * action.payload.quantity),
       };
 
     default:
