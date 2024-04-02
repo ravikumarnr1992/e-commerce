@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getSearchValue } from "../features/Search/searchSlice";
+import { searchValue } from "../features/Search/searchSlice";
 
 const SearchInput = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const SearchInput = () => {
         </svg>
         <input
           type="text"
-          onChange={e => dispatch(getSearchValue(e.target.value))}
+          onChange={e => dispatch(searchValue(e.target.value))}
           placeholder="Search"
           className="w-full py-1 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
         />

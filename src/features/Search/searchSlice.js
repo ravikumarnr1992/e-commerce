@@ -1,21 +1,23 @@
-const initialStateSearch = {
-    searchValue: ''
-  };
-  
-  export default function searchReducer(state = initialStateSearch, action) {
-    switch (action.type) {
-      case "search/searchValue":
-        return {
-          ...state,
-          searchValue: action.payload
-        };
-      default:
-        return state
-  }
-}
+import { createSlice } from "@reduxjs/toolkit";
 
-  export function getSearchValue(value) {
-      return { type: "search/searchValue", payload: value };
-    };
+const initialState = {
+    searchValue: ""
+  };
+
+
+  const searchSlice = createSlice({
+    name: 'search',
+    initialState,
+    reducers: {
+      searchValue: (state, action) => {
+       state.searchValue = action.payload
+      }
+    }
+  })
+
+  export const { searchValue} = searchSlice.actions;
+
+  export default searchSlice.reducer;
+  
   
   

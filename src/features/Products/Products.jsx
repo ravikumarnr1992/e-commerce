@@ -7,7 +7,7 @@ import useDebounce from "../../hooks/useDebounce";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { items, isLoading } = useSelector((store) => store?.product);
+  const { items, isLoading } = useSelector((store) => store.product);
 
   const { searchValue } = useSelector((store) => store?.search);
 

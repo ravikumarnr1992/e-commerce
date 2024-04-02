@@ -2,13 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const CartIcon = () => {
-    const {cartItems} = useSelector(store => store?.cart);
+    const { cartItems } = useSelector(store => store?.cart);
+
   return (
     <div className="flex justify-center items-center cursor-pointer">
       <div className="relative px-1">
         <div className="t-0 absolute left-3">
           <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-            {cartItems.length}
+            {cartItems?.length} 
           </p>
         </div>
         <svg

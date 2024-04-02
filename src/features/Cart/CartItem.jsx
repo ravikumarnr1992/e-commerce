@@ -1,11 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItemToCart, clearItemFromCart, removeItemFromCart } from "./cartSlice";
+import toast from "react-hot-toast";
+import { addItems, removeItems, clearItems } from "./cartSlice";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
-  // console.log(item);
+  const handleClearCartItems = (item) => {
+    dispatch(clearItems(item));
+    toast.error("Item removed from cart...");
+  }
 
  return (
     <div className="justify-between mb-2 rounded-lg bg-white px-6 py-2 shadow-md sm:flex sm:justify-start">
@@ -17,7 +21,7 @@ const CartItem = ({ item }) => {
         </div>
         <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
           <div className="flex items-center border-gray-100">
-            <button onClick={()=> dispatch(removeItemFromCart(item))} className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+            <button onClick={()=> dispatch(removeItems(item))} className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
               -
             </button>
             <input
@@ -27,13 +31,13 @@ const CartItem = ({ item }) => {
              min="1"
               readOnly
             />
-            <button onClick={()=> dispatch(addItemToCart(item))} className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+            <button onClick={()=> dispatch(addItems(item))} className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
               +
             </button>
           </div>
           <div className="flex items-center space-x-4">
             <p className="text-sm">{item?.price} $</p>
-            <svg onClick={()=> dispatch(clearItemFromCart(item))}
+            <svg onClick={() => handleClearCartItems(item)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
