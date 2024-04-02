@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../Cart/cartSlice";
+import { addItems } from "../Cart/cartSlice";
 import Tooltip from "../../UI/Tooltip";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleItemClick = (item) => {
-    dispatch(addItemToCart(item));
+    dispatch(addItems(item));
+    toast.success("Item added to cart successfully...");
   };
 
   return (

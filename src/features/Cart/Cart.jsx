@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import CartItem from "./CartItem";
 import CheckoutForm from "./CheckoutForm";
-import { useState } from "react";
+
 
 const Cart = () => {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
