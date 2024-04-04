@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900">
-      <div className="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24">
+      <div className="max-w-screen-xl px-4 pt-6 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-10">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div className="flex justify-center text-teal-300 sm:justify-start">
@@ -134,7 +134,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-3">
             <div className="text-center sm:text-left">
               <p className="text-lg font-medium text-white">About Us</p>
 
@@ -179,49 +179,7 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-white">Our Services</p>
-
-              <nav className="mt-8">
-                <ul className="space-y-4 text-sm">
-                  <li>
-                    <a
-                      className="text-white transition hover:text-white/75"
-                      href="/"
-                    >
-                      Web Development
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      className="text-white transition hover:text-white/75"
-                      href="/"
-                    >
-                      Web Design
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      className="text-white transition hover:text-white/75"
-                      href="/"
-                    >
-                      Marketing
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      className="text-white transition hover:text-white/75"
-                      href="/"
-                    >
-                      Google Ads
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+           
 
             <div className="text-center sm:text-left">
               <p className="text-lg font-medium text-white">Helpful Links</p>
@@ -351,7 +309,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-6 mt-12 border-t border-gray-800">
+        <div className="pt-3 mt-10 border-t border-gray-800">
           <div className="text-center sm:flex sm:justify-between sm:text-left">
             <p className="text-sm text-gray-400">
               <span className="block sm:inline">All rights reserved.</span>

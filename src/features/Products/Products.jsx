@@ -13,6 +13,7 @@ const Products = () => {
 
   const debouncedSearchValue = useDebounce(searchValue, 1000);
 
+
   useEffect(() => {
     dispatch(getItems());
   }, []);
@@ -27,8 +28,9 @@ const Products = () => {
               .startsWith(debouncedSearchValue?.toLowerCase())
           ) {
             return item;
-          }
+          } 
         });
+
 
   return (
     <>
