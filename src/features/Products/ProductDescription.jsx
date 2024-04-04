@@ -10,6 +10,8 @@ const ProductDescription = () => {
 
   const { id } = useParams();
 
+  console.log(window.location.href);
+
   const dispatch = useDispatch();
 
   const currentProduct = items?.find((product) => product.id === parseInt(id));
