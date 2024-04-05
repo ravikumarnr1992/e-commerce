@@ -1,26 +1,22 @@
-import CartIcon from "../../features/Cart/CartIcon";
-import SearchInput from "../SearchInput";
-import { useState } from "react";
-import Cart from "../../features/Cart/Cart";
-import Modal from "../../UI/Modal";
+import CartIcon from "../Cart/CartIcon";
+import SearchInput from "../../UI/SearchInput";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ProfileIcon from "../../features/Profile/ProfileIcon";
+import ProfileIcon from "../Profile/ProfileIcon";
 
 const Header = () => {
-  const [showModal, setShowModal] = useState(false);
   const {isLoggedIn} = useSelector(store => store?.login);
 
   const {pathname} = useLocation();
 
   return (
-    <header className="bg-gray-100 border-gray-200 border-b border-3">
+    <header className="bg-gray-600 border-gray-200 border-b border-3">
       <nav className="py-2 md:py-2">
         <div className="container px-4 mx-auto md:flex md:items-center">
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              className="font-bold text-2xl text-indigo-600 hover:text-blue-600"
+              className="font-bold text-2xl text-white hover:text-blue-600"
             >
               e-Commerce
             </Link>
@@ -42,14 +38,20 @@ const Header = () => {
 
            {!isLoggedIn  &&  pathname !== '/login' && <Link
               to="login"
-              className="p-1 pt-2 text-justify lg:px-2 text-indigo-600 text-center border border-solid border-indigo-500 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+              className="p-1 pt-2 text-justify lg:px-2 text-white bg-teal-600 text-center border border-solid border-teal-500 rounded hover:bg-blue-800 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
             >
               Login
             </Link>} 
 
             {isLoggedIn &&  pathname !== '/login' && <ProfileIcon />}
 
-            <a
+            <Link to="cart"
+              className="flex px-1 lg:px-4 md:mx-2 text-white bg-teal-600 text-center border border-solid border-teal-500 rounded hover:bg-blue-800 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+            >
+              <span className="pt-2">Cart</span> <CartIcon />
+            </Link>
+
+            {/*<a
               onClick={() => {
                 setShowModal((prev) => !prev);
               }}
@@ -57,7 +59,7 @@ const Header = () => {
             >
               <span className="pt-2">Cart</span> <CartIcon />
             </a>
-            <div>
+             <div>
               <Modal
                 shouldShow={showModal}
                 onRequestClose={() => {
@@ -66,7 +68,7 @@ const Header = () => {
               >
                 <Cart />
               </Modal>
-            </div>
+            </div> */}
           
           </div>
           

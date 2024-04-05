@@ -1,18 +1,26 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "./cartSlice";
+
 
 const CheckoutForm = () => {
-
+const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { register, formState: { errors }, handleSubmit } = useForm();
 
     const handleSubmitform = (data) => {
-    console.log(data);
+      dispatch(clearCart(data))
+      toast.success('Your order confirmed successfully...')
+      navigate('/products');
     }
 
   return (
-    <div className="space-y-12">
+    <div className="flex justify-center space-y-12">
       <div className="border-b border-gray-900/10 pb-12 px-3">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
+          <h2 className="text-base text-center font-semibold leading-7 text-gray-900">
             Order Confirmation
           </h2>
           <form onSubmit={handleSubmit(handleSubmitform)}>
@@ -31,7 +39,7 @@ const CheckoutForm = () => {
                     name="firstName"
                     id="firstName"
                     autoComplete="firstName"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("firstName", { required: true, maxLength: 5 })}
                     aria-invalid={errors.firstName ? "true" : "false"}
                   />
@@ -57,7 +65,7 @@ const CheckoutForm = () => {
                     name="last-name"
                     id="last-name"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("lastName", { minLength: 2 })}
                   />
                 </div>
@@ -76,7 +84,7 @@ const CheckoutForm = () => {
                     name="phone"
                     type="number"
                     autoComplete="phone"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("phoneNumber", { minLength: 2 })}
                   />
                 </div>
@@ -94,7 +102,7 @@ const CheckoutForm = () => {
                     id="country"
                     name="country"
                     autoComplete="country-name"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6"
                     {...register("Country")}
                   >
                     <option>United States</option>
@@ -118,7 +126,7 @@ const CheckoutForm = () => {
                     name="street-address"
                     id="street-address"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("streetAddress", { minLength: 2 })}
                   />
                 </div>
@@ -137,7 +145,7 @@ const CheckoutForm = () => {
                     name="city"
                     id="city"
                     autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("City", { minLength: 2 })}
                   />
                 </div>
@@ -156,7 +164,7 @@ const CheckoutForm = () => {
                     name="region"
                     id="region"
                     autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("State", { minLength: 2 })}
                   />
                 </div>
@@ -175,7 +183,7 @@ const CheckoutForm = () => {
                     name="postal-code"
                     id="postal-code"
                     autoComplete="postal-code"
-                    className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     {...register("postalCode", { minLength: 2 })}
                   />
                 </div>
