@@ -87,12 +87,17 @@ increaseQuantity: (state, action) => {
     ],
     state.totalPrice = state.totalPrice + action.payload.price * action.payload.quantity
   };
+},
+
+clearCart: (state) => {
+  state.cartItems = []
+  state.totalPrice = 0
 }
 
 
   },
 });
 
-export const { addItems, removeItems, clearItems, increaseQuantity } = cartSlice.actions;
+export const { addItems, removeItems, clearItems, increaseQuantity, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
