@@ -16,6 +16,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getItems());
+    
   }, []);
 
   const filteredItems =

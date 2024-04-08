@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Input from "../../UI/Input";
-import { getUserData } from "./Data";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { authenticatedUser, getUserDetails } from "./loginSlice";
 import cartlogo from '../../assets/images/shopping_cart.png'
+import { authUser } from "../../services/apiLogin";
+import { authenticatedUser, getUserDetails } from "./loginSlice";
+
+
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -18,14 +20,16 @@ const Login = () => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const isAuthenticated = getUserData(userInfo);
+    const isAuthenticated = await authUser(userInfo);
 
-    if(isAuthenticated.length) {
-        dispatch(authenticatedUser(true));
-        dispatch(getUserDetails(isAuthenticated))
+    console.log(isAuthenticated)
+  
+    if(isAuthenticated) {
+      dispatch(authenticatedUser(true))
+      dispatch(getUserDetails(isAuthenticated))
         navigate("/");
     } else {
         setError(true);
@@ -58,8 +62,8 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                       <p className="mb-4">Please login to your account</p>
                       <Input
-                        label="User name"
-                        name="name"
+                        label="Email Id"
+                        name="email"
                         type="text"
                         OnChange={handleUser}
                       />
