@@ -1,5 +1,12 @@
 # React + Vite
 
+# Local environment variable setup
+
+# Create your supabase account and add the supabase url and key in .env file
+# Example 
+`VITE_KEY` = "your supabase key"
+`VITE_URL` = "your supabase url"
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
