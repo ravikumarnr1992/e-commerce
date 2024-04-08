@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authenticatedUser } from "../Login/loginSlice";
+import {useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { authenticatedUser } from "../Login/loginSlice";
 
 const ProfileIcon = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const { loggedInUser } = useSelector(store => store?.login)
-
-  const [userData] = loggedInUser;
+  const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch();
+
+  const { loggedInUser } = useSelector(store => store?.login);
+
+  const {user} = loggedInUser;
+
+  console.log(loggedInUser)
 
   return (
     <div className="flex justify-center items-center">
@@ -28,7 +30,7 @@ const ProfileIcon = () => {
               />
             </div>
             <div className="font-semibold text-white text-lg">
-              <div className="cursor-pointer">{userData.name}</div>
+              <div className="cursor-pointer">{user.name}</div>
             </div>
           </div>
           {isOpen && (
