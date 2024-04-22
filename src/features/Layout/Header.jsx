@@ -7,7 +7,6 @@ import ProfileIcon from "../Profile/ProfileIcon";
 const Header = () => {
 
   const {isLoggedIn} = useSelector(store => store?.login);
-
   const {pathname} = useLocation();
 
   return (
@@ -51,25 +50,6 @@ const Header = () => {
             >
               <span className="pt-2">Cart</span> <CartIcon />
             </Link>
-
-            {/*<a
-              onClick={() => {
-                setShowModal((prev) => !prev);
-              }}
-              className="flex px-1 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-500 rounded hover:bg-blue-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
-            >
-              <span className="pt-2">Cart</span> <CartIcon />
-            </a>
-             <div>
-              <Modal
-                shouldShow={showModal}
-                onRequestClose={() => {
-                  setShowModal((prev) => !prev);
-                }}
-              >
-                <Cart />
-              </Modal>
-            </div> */}
           
           </div>
           

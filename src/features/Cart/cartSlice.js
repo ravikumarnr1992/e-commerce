@@ -17,9 +17,9 @@ const cartSlice = createSlice({
         state.cartItems = state.cartItems.map((item) =>
           item.id === action.payload.id
             ? {
-                ...item,
-                quantity: item.quantity === undefined ? 1 : item.quantity + 1,
-              }
+              ...item,
+              quantity: item.quantity === undefined ? 1 : item.quantity + 1,
+            }
             : item
         );
         state.totalPrice = state.totalPrice + action.payload.price;
@@ -41,9 +41,9 @@ const cartSlice = createSlice({
         (state.cartItems = state.cartItems.map((item) =>
           item.id === action.payload.id
             ? {
-                ...item,
-                quantity: item.quantity - 1,
-              }
+              ...item,
+              quantity: item.quantity - 1,
+            }
             : item
         )),
           (state.totalPrice = state.totalPrice - action.payload.price);
@@ -63,36 +63,36 @@ const cartSlice = createSlice({
           state.totalPrice - action.payload.price * action.payload.quantity);
     },
 
-increaseQuantity: (state, action) => {
-  const itenInCart = state?.cartItems?.find(
-    (item) => item.id === action.payload.id
-  );
+    increaseQuantity: (state, action) => {
+      const itenInCart = state?.cartItems?.find(
+        (item) => item.id === action.payload.id
+      );
 
-  if (itenInCart) {
-      state.cartItems = state.cartItems.map((item) =>
-        item.id === action.payload.id
-          ? {
+      if (itenInCart) {
+        state.cartItems = state.cartItems.map((item) =>
+          item.id === action.payload.id
+            ? {
               ...item,
               quantity: parseInt(item.quantity + action.payload.quantity),
             }
-          : item
-      ),
-      state.totalPrice = state.totalPrice + action.payload.price * action.payload.quantity
-  }
+            : item
+        ),
+          state.totalPrice = state.totalPrice + action.payload.price * action.payload.quantity
+      }
 
-  else {
-    state.cartItems = [
-      ...state.cartItems,
-      { ...action.payload, quantity: action.payload.quantity },
-    ],
-    state.totalPrice = state.totalPrice + action.payload.price * action.payload.quantity
-  };
-},
+      else {
+        state.cartItems = [
+          ...state.cartItems,
+          { ...action.payload, quantity: action.payload.quantity },
+        ],
+          state.totalPrice = state.totalPrice + action.payload.price * action.payload.quantity
+      };
+    },
 
-clearCart: (state) => {
-  state.cartItems = []
-  state.totalPrice = 0
-}
+    clearCart: (state) => {
+      state.cartItems = []
+      state.totalPrice = 0
+    }
 
 
   },

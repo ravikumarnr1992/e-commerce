@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import Layout from "./features/Layout/Layout";
 import Products from "./features/Products/Products";
 import ProductDescription from "./features/Products/ProductDescription";

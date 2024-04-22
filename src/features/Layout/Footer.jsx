@@ -179,7 +179,7 @@ const Footer = () => {
               </nav>
             </div>
 
-           
+
 
             <div className="text-center sm:text-left">
               <p className="text-lg font-medium text-white">Helpful Links</p>

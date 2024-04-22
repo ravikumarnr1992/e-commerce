@@ -8,15 +8,11 @@ import useDebounce from "../../hooks/useDebounce";
 const Products = () => {
   const dispatch = useDispatch();
   const { items, isLoading } = useSelector((store) => store.product);
-
   const { searchValue } = useSelector((store) => store?.search);
-
   const debouncedSearchValue = useDebounce(searchValue, 1000);
-
 
   useEffect(() => {
     dispatch(getItems());
-    
   }, []);
 
   const filteredItems =
