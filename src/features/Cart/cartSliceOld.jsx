@@ -9,7 +9,7 @@ export default function cartReducer(state = initialState, action) {
       case "cart/addItems":
         const item = state?.cartItems?.find(
           (item) => item.id === action.payload.id
-        );
+        )
   
         if (item) {
           return {

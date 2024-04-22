@@ -1,4 +1,3 @@
-
 const Input = ({label, type, OnChange, name}) => {
   return (
     <div className="mb-2">

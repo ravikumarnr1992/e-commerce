@@ -6,8 +6,6 @@ import cartlogo from '../../assets/images/shopping_cart.png'
 import { authUser } from "../../services/apiLogin";
 import { authenticatedUser, getUserDetails } from "./loginSlice";
 
-
-
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [error, setError] = useState(false);
@@ -25,14 +23,12 @@ const Login = () => {
 
     const isAuthenticated = await authUser(userInfo);
 
-    console.log(isAuthenticated)
-  
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       dispatch(authenticatedUser(true))
       dispatch(getUserDetails(isAuthenticated))
-        navigate("/");
+      navigate("/");
     } else {
-        setError(true);
+      setError(true);
     }
     setUserInfo("");
   };
@@ -81,7 +77,7 @@ const Login = () => {
                           type="submit"
                           className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                           style={{
-                                 background: "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
+                            background: "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
                           }}
                         >
                           Log in
@@ -96,7 +92,7 @@ const Login = () => {
                   className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
                   style={{
                     background: "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
-             }}
+                  }}
                 >
                   <div className="px-4 py-6 text-white md:mx-6 md:p-4">
                     <h4 className="mb-6 text-lg font-semibold">

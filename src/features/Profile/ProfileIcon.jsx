@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-import {useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { authenticatedUser } from "../Login/loginSlice";
+import { logoutUser } from "../../services/apiLogin";
+import useUserDetails from "../../hooks/useUserDetails";
+
 
 const ProfileIcon = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch();
+  const { userDetails } = useUserDetails()
 
-  const { loggedInUser } = useSelector(store => store?.login);
-
-  const {user} = loggedInUser;
-
-  console.log(loggedInUser)
+  const handleLogout = () => {
+    dispatch(authenticatedUser(false))
+    logoutUser()
+  }
 
   return (
     <div className="flex justify-center items-center">
@@ -30,7 +33,7 @@ const ProfileIcon = () => {
               />
             </div>
             <div className="font-semibold text-white text-lg">
-              <div className="cursor-pointer">{user.name}</div>
+              <div className="cursor-pointer">{userDetails[0]?.name}</div>
             </div>
           </div>
           {isOpen && (
@@ -93,7 +96,7 @@ const ProfileIcon = () => {
                 <hr className="dark:border-gray-700" />
                 <li className="font-medium">
                   <a
-                    onClick={() => dispatch(authenticatedUser(false))}
+                    onClick={handleLogout}
                     className="flex items-center cursor-pointer transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600"
                   >
                     <div className="mr-3 text-red-600">

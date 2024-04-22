@@ -4,7 +4,6 @@ const initialState = {
     searchValue: ""
   };
 
-
   const searchSlice = createSlice({
     name: 'search',
     initialState,

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "./cartSlice";
 
-
 const CheckoutForm = () => {
 const dispatch = useDispatch();
   const navigate = useNavigate();

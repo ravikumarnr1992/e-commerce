@@ -4,14 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import { increaseQuantity } from "../Cart/cartSlice";
 
 const ProductDescription = () => {
+
   const { items } = useSelector((store) => store?.product);
-
   const [quantity, setQuantity] = useState(1);
-
   const { id } = useParams();
-
-  console.log(window.location.href);
-
   const dispatch = useDispatch();
 
   const currentProduct = items?.find((product) => product.id === parseInt(id));
@@ -19,7 +15,6 @@ const ProductDescription = () => {
   const formHandler = (e) => {
     e.preventDefault();
     setQuantity(e.target.value);
-    // console.log({ ...currentProduct, quantity })
     dispatch(increaseQuantity({ ...currentProduct, quantity }));
     setQuantity('');
   };
