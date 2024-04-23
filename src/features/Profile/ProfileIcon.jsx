@@ -5,12 +5,12 @@ import { authenticatedUser } from "../Login/loginSlice";
 import { logoutUser } from "../../services/apiLogin";
 import useUserDetails from "../../hooks/useUserDetails";
 
-
 const ProfileIcon = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch();
   const { userDetails } = useUserDetails()
+  const  [ userData ]= userDetails
 
   const handleLogout = () => {
     dispatch(authenticatedUser(false))
@@ -33,7 +33,7 @@ const ProfileIcon = () => {
               />
             </div>
             <div className="font-semibold text-white text-lg">
-              <div className="cursor-pointer">{userDetails[0]?.name}</div>
+              <div className="cursor-pointer">{userData?.name}</div>
             </div>
           </div>
           {isOpen && (
