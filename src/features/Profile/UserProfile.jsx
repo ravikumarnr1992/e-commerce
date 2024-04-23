@@ -1,7 +1,8 @@
 import useUserDetails from "../../hooks/useUserDetails";
 const UserProfile = () => {
 
-  const { userDetails } = useUserDetails()
+  const  { userDetails } = useUserDetails()
+  const  [ userData ]= userDetails
 
   return (
     <section className="w-full overflow-hidden dark:bg-gray-900">
@@ -15,12 +16,12 @@ const UserProfile = () => {
         <div className="sm:w-[80%] xs:w-[90%] mx-auto flex">
 
           <img
-            src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80"
+            src={userData?.user_img_url}
             alt="User Profile"
             className="rounded-md lg:w-[10rem] lg:h-[10rem] md:w-[8rem] md:h-[8rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-blue-500 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]"
           />
           <h1 className="w-full text-left my-4 sm:mx-4 xs:pl-4 text-gray-800 dark:text-white lg:text-4xl md:text-3xl sm:text-3xl xs:text-xl font-serif">
-            {userDetails[0]?.name}
+            {userData?.name}
           </h1>
         </div>
 
@@ -37,14 +38,14 @@ const UserProfile = () => {
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Name
                     </dt>
-                    <dd className="text-lg font-semibold">{userDetails[0]?.name}</dd>
+                    <dd className="text-lg font-semibold">{userData?.name}</dd>
                   </div>
 
                   <div className="flex flex-col py-3">
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Date Of Birth
                     </dt>
-                    <dd className="text-lg font-semibold">30/12/1992</dd>
+                    <dd className="text-lg font-semibold">{userData?.dob}</dd>
                   </div>
                   <div className="flex flex-col py-3">
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
@@ -69,25 +70,17 @@ const UserProfile = () => {
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Phone Number
                     </dt>
-                    <dd className="text-lg font-semibold">{userDetails[0]?.phone}</dd>
+                    <dd className="text-lg font-semibold">{userData?.phone}</dd>
                   </div>
                   <div className="flex flex-col pt-3">
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Email
                     </dt>
                     <dd className="text-lg font-semibold">
-                      ravi@gmail.com
+                    {userData?.email}
                     </dd>
                   </div>
 
-                  <div className="flex flex-col pt-3">
-                    <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
-                      Website
-                    </dt>
-                    <dd className="text-lg font-semibold">
-                      https://www.teclick.com
-                    </dd>
-                  </div>
                 </dl>
               </div>
             </div>
