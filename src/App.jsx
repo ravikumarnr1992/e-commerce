@@ -7,6 +7,7 @@ import UserProfile from "./features/Profile/UserProfile";
 import Cart from "./features/Cart/Cart";
 import OrderConfirmation from "./features/Order/OrderConfirmation";
 import ProtectedRoute from "./UI/ProtectedRoute";
+import UpdateProfile from "./features/Profile/UpdateProfile";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='login' element={<Login />} />
           <Route path='userprofile' element={<UserProfile />} />
           <Route path='orderConfirmation' element={<OrderConfirmation />} />
+          <Route path='updateProfile' element={<UpdateProfile />} />
         </Route> 
       </Routes>
     </BrowserRouter>

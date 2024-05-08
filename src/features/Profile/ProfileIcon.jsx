@@ -27,7 +27,7 @@ const ProfileIcon = () => {
           <div className="flex justify-center items-center space-x-3 cursor-pointer">
             <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
               <img
-                src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                src={userData?.user_img_url}
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -64,8 +64,7 @@ const ProfileIcon = () => {
                   </Link>
                 </li>
                 <li className="font-medium">
-                  <a
-                    href="#"
+                  <Link to='updateProfile'
                     className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
                   >
                     <div className="mr-3">
@@ -91,7 +90,7 @@ const ProfileIcon = () => {
                       </svg>
                     </div>
                     Setting
-                  </a>
+                  </Link>
                 </li>
                 <hr className="dark:border-gray-700" />
                 <li className="font-medium">
