@@ -10,11 +10,14 @@ const initialState = {
     reducers: {
       searchValue: (state, action) => {
        state.searchValue = action.payload
+      },
+      clearSearchValue: (state) => {
+        state.searchValue = ""
       }
     }
   })
 
-  export const { searchValue} = searchSlice.actions;
+  export const { searchValue, clearSearchValue} = searchSlice.actions;
 
   export default searchSlice.reducer;
   

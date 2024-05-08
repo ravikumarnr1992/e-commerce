@@ -4,6 +4,7 @@ import { getItems } from "./productSlice";
 import ProductItem from "./ProductItem";
 import Spinner from "../../UI/Spinner";
 import useDebounce from "../../hooks/useDebounce";
+import Message from "../../UI/Message";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,8 @@ const Products = () => {
               .startsWith(debouncedSearchValue?.toLowerCase())
           ) {
             return item;
-          } 
+          }
         });
-
 
   return (
     <>
@@ -37,8 +37,10 @@ const Products = () => {
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {filteredItems?.map((product) => (
               <ProductItem product={product} key={product.id} />
-            ))}
+            )) 
+          }
           </div>
+          {filteredItems.length < 1 && <Message />}
         </div>
       </div>
     </>

@@ -1,12 +1,15 @@
 import CartIcon from "../Cart/CartIcon";
 import SearchInput from "../../UI/SearchInput";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileIcon from "../Profile/ProfileIcon";
+import { searchValue } from "../Search/searchSlice";
+
 
 const Header = () => {
 
   const {isLoggedIn} = useSelector(store => store?.login);
+  const dispatch = useDispatch();
   const {pathname} = useLocation();
 
   return (
@@ -14,7 +17,7 @@ const Header = () => {
       <nav className="py-2 md:py-2">
         <div className="container px-4 mx-auto md:flex md:items-center">
           <div className="flex justify-between items-center">
-            <Link
+            <Link onClick={() =>dispatch(searchValue("")) }
               to="/"
               className="font-bold text-2xl text-white hover:text-blue-600"
             >
