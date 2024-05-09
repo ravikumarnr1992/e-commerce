@@ -16,7 +16,7 @@ const UserProfile = () => {
         <div className="sm:w-[80%] xs:w-[90%] mx-auto flex">
 
           <img
-            src={userData?.user_img_url}
+            src={userData?.image}
             alt="User Profile"
             className="rounded-md lg:w-[10rem] lg:h-[10rem] md:w-[8rem] md:h-[8rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-blue-500 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]"
           />

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { updateUser } from "../../services/apiSettings";
+import { updateUser } from "../../services/apiUser";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
@@ -9,7 +9,9 @@ const UpdateProfile = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const handleForm = (data) => {
-       updateUser({ ...data, user_img_url: data.user_img_url[0].name }, loggedInUser.user.id)
+      const image = typeof data.image === "string" ? data.image : data.image[0];
+       console.log('---------------DDDDD', data)
+       updateUser({ ...data, image }, loggedInUser.user.id)
        toast.success("User details successfully updated...")
     }
 
@@ -233,7 +235,7 @@ const UpdateProfile = () => {
           <div className="w-full  px-3  md:mb-0">
             <label
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="user_img_url"
+              htmlFor="image"
             >
               User photo
             </label>
@@ -250,14 +252,14 @@ const UpdateProfile = () => {
         dark:hover:file:bg-blue-400
       "
       type="file"
-      id="user_img_url"
-      name="user_img_url"
+      id="image"
+      name="image"
       accept="image/*"
-      {...register("user_img_url", { required: true })}
+      {...register("image")}
             />
             <p
               className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="user_img_url"
+              id="image"
             >
               SVG, PNG, JPG or GIF (MAX. 800x400px).
             </p>
