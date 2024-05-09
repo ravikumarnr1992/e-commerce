@@ -27,7 +27,7 @@ const ProfileIcon = () => {
           <div className="flex justify-center items-center space-x-3 cursor-pointer">
             <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
               <img
-                src={userData?.user_img_url}
+                src={userData?.image}
                 alt=""
                 className="w-full h-full object-cover"
               />
@@ -60,7 +60,7 @@ const ProfileIcon = () => {
                         ></path>
                       </svg>
                     </div>
-                    Account
+                    User Profile
                   </Link>
                 </li>
                 <li className="font-medium">
@@ -89,7 +89,7 @@ const ProfileIcon = () => {
                         ></path>
                       </svg>
                     </div>
-                    Setting
+                    Update User 
                   </Link>
                 </li>
                 <hr className="dark:border-gray-700" />
