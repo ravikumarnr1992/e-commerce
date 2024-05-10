@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 *.cjs
 *.env
-.env
+*.env.local
