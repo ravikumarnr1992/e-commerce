@@ -1,8 +1,8 @@
 import useUserDetails from "../../hooks/useUserDetails";
 const UserProfile = () => {
 
-  const  { userDetails } = useUserDetails()
-  const  [ userData ]= userDetails
+  const { userDetails } = useUserDetails()
+  const [userData] = userDetails
 
   return (
     <section className="w-full overflow-hidden dark:bg-gray-900">
@@ -77,7 +77,7 @@ const UserProfile = () => {
                       Email
                     </dt>
                     <dd className="text-lg font-semibold">
-                    {userData?.email}
+                      {userData?.email}
                     </dd>
                   </div>
 

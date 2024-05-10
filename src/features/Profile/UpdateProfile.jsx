@@ -9,9 +9,9 @@ const UpdateProfile = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const handleForm = (data) => {
-      let hasImgUpload = data && data.image[0] ? true : false
-      const image = typeof data.image === "string" ? data.image : data.image[0];
-       updateUser({ ...data, image }, loggedInUser.user.id, hasImgUpload)
+      const newImgUpload = data && data.image[0] ? true : false
+      const image = data.image[0];
+       updateUser({ ...data, image }, loggedInUser.user.id, newImgUpload)
        toast.success("User details successfully updated...")
     }
 
