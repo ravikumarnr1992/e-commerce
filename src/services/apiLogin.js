@@ -13,6 +13,7 @@ export async function getUser(id) {
   return data;
 }
 
+
 export async function authUser(userData) {
 
   const { data, error } = await supabase.auth.signInWithPassword({

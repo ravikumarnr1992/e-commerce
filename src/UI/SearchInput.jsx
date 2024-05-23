@@ -6,7 +6,7 @@ const SearchInput = () => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     dispatch(searchValue(e.target.value))
-   
+    
   }
 
   return (
@@ -28,7 +28,7 @@ const SearchInput = () => {
         </svg>
         <input
           type="text"
-          value={searchValue}
+          // value={searchValue}
           onChange={submitHandler}
           placeholder="Search"
           className="w-full py-1 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"

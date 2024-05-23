@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
-import Input from "../../UI/Input";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import cartlogo from '../../assets/images/shopping_cart.png'
+import cartlogo from "../../assets/images/shopping_cart.png";
 import { authUser } from "../../services/apiLogin";
 import { authenticatedUser, getUserDetails } from "./loginSlice";
+import LabelInput from "../../UI/LabelInput";
+import { ValidateEmail, ValidatePassword } from "../../common/validate";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState();
+  const [passwordError, setPasswordError] = useState();
 
-  const dispatch = useDispatch()
+  console.log(emailError);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -20,17 +25,35 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEmailError();
+    setPasswordError();
 
-    const isAuthenticated = await authUser(userInfo);
+    const isValidEmail = ValidateEmail(document.loginform.email);
+    const isValidPassword = ValidatePassword(document.loginform.password);
 
-    if (isAuthenticated) {
-      dispatch(authenticatedUser(true))
-      dispatch(getUserDetails(isAuthenticated))
-      navigate("/");
+    console.log(isValidEmail);
+
+    if (!isValidEmail.emailError) {
+      if (!isValidPassword.passwordError) {
+        try {
+          const isAuthenticated = await authUser(userInfo);
+
+          if (isAuthenticated) {
+            dispatch(authenticatedUser(true));
+            dispatch(getUserDetails(isAuthenticated));
+            navigate("/");
+          }
+        } catch (error) {
+          // Handle authentication error
+          console.error("Authentication failed:", error);
+          setError(true);
+        }
+      } else {
+        setPasswordError(isValidPassword.message);
+      }
     } else {
-      setError(true);
+      setEmailError(isValidEmail.message);
     }
-    setUserInfo("");
   };
 
   return (
@@ -45,31 +68,43 @@ const Login = () => {
                   <div className="md:mx-6 md:p-4">
                     {/* <!--Logo--> */}
                     <div className="text-center">
-                      <img
-                        className="mx-auto w-48"
-                        src={cartlogo}
-                        alt="logo"
-                      />
+                      <img className="mx-auto w-48" src={cartlogo} alt="logo" />
                       <h4 className="mb-6 mt-1 pb-1 text-lg font-semibold">
-                        We are The e-commerce Team
+                        We are the e-commerce Team
                       </h4>
                     </div>
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} name="loginform">
                       <p className="mb-4">Please login to your account</p>
-                      <Input
+                      <LabelInput
                         label="Email Id"
                         name="email"
                         type="text"
                         OnChange={handleUser}
                       />
-                      <Input
+                      {emailError && (
+                        <span className="text-red-500 text-sm">
+                          {emailError}
+                        </span>
+                      )}
+                      <LabelInput
                         label="Password"
                         type="password"
                         name="password"
                         OnChange={handleUser}
                       />
-                      {error && <p>Invalid credentials</p>}
+
+                      {passwordError && (
+                        <span className="text-red-500 text-sm">
+                          {passwordError}
+                        </span>
+                      )}
+
+                      {error && (
+                        <span className="text-red-500 text-sm">
+                          Invalid credentials
+                        </span>
+                      )}
 
                       {/* <!--Submit button--> */}
                       <div className="mb-6 pb-1 pt-1 text-center">
@@ -77,7 +112,8 @@ const Login = () => {
                           type="submit"
                           className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                           style={{
-                            background: "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
+                            background:
+                              "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
                           }}
                         >
                           Log in
@@ -91,7 +127,8 @@ const Login = () => {
                 <div
                   className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
                   style={{
-                    background: "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
+                    background:
+                      "linear-gradient(to right, rgb(78 158 169), #20666e, rgb(22 127 160), rgb(50 181 200))",
                   }}
                 >
                   <div className="px-4 py-6 text-white md:mx-6 md:p-4">
